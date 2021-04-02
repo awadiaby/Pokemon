@@ -1,0 +1,7 @@
+<p>Bienvenue dans l'univers de AwaLove & Amad!</p>
+<input [(ngModel)]="id" id="numéro">
+<p>Texte saisi : {{id}}</p>
+<input readonly id="id" value="{{id}}"><br><br>
+<select  [ngModel]="selectedPokemon" (ngModelChange)="onChange($event)">
+    <option *ngFor="let pokemon of (list | filterPokemonPipe:'nom':id)">{{pokemon.nom}}</option>
+ </select>
