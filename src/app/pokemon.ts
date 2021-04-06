@@ -1,9 +1,17 @@
 export class Pokemon {
-    id : number;
-    nom : string;
+  id: number;
+  name: string;
+  url: string;
+  base_experience: number = 0;
+  height: number = 0;
+  location_area_encounters: string = '';
+  order: number = 0;
+  weight: number = 0;
+  stats: any = [];
 
-    constructor(id: number, nom: string) {
-        this.id = id;
-        this.nom = nom;
-    }
+  constructor(id: number, name: string, url: string) {
+    this.id = id;
+    this.name = name;
+    this.url = url;
+  }
 }

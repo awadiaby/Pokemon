@@ -1,7 +1,13 @@
 <p>Bienvenue dans l'univers de AwaLove & Amad!</p>
-<input [(ngModel)]="id" id="numéro">
-<p>Texte saisi : {{id}}</p>
-<input readonly id="id" value="{{id}}"><br><br>
-<select  [ngModel]="selectedPokemon" (ngModelChange)="onChange($event)">
-    <option *ngFor="let pokemon of (list | filterPokemonPipe:'nom':id)">{{pokemon.nom}}</option>
- </select>
+<input [(ngModel)]="id" id="numéro" />
+<p>Texte saisi : {{ id }}</p>
+<input readonly id="id" value="{{ id }}" /><br /><br />
+<select [ngModel]="selectedPokemon" (ngModelChange)="onChange($event)">
+  <option *ngFor="let pokemon of list | filterPokemonPipe: 'nom':id">
+    {{ pokemon.nom }}
+  </option>
+</select><br /><br />
+<button (click)="afficherPokemon()">Go !</button>
+
+<!-- pour tester Material ui -->
+<mat-slider min="1" max="100" step="1" value="1"></mat-slider>

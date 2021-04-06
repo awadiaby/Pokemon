@@ -1,29 +1,54 @@
+import { PokemonEntry } from './../Config';
+import { PokeApiService } from './../poke-api.service';
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../pokemon';
 
 @Component({
   selector: 'app-my-component',
   templateUrl: './my-component.component.html',
-  styleUrls: ['./my-component.component.css']
+  styleUrls: ['./my-component.component.css'],
 })
 export class MyComponentComponent implements OnInit {
-
   id: string = '';
-  list: Pokemon[] = [
-    new Pokemon(1, "Florizare"),
-    new Pokemon(2, "Reptincel"),
-    new Pokemon(3, "Dracaufeu"),
-    new Pokemon(4, "Carapuce"),
-  ];
+  list: Pokemon[] = [];
 
-  selectedPokemon ="Florizare";
-  constructor() { }
-
-  ngOnInit(): void {
+  selectedPokemon = 'Florizare';
+  constructor(private pokeApiService: PokeApiService) {
+    //this.getPokemons();
+    this.getPokemonInfo();
   }
 
-  onChange(value:any) {
+  ngOnInit(): void {}
+
+  onChange(value: any) {
     console.log(value);
     this.selectedPokemon = value;
+  }
+
+  afficherPokemon(): void {
+    if (this.list.some((pokemon) => pokemon.name === this.id)) {
+      console.log(this.id);
+    } else if (this.list.some((pokemon) => pokemon.id === parseInt(this.id))) {
+      console.log(this.id);
+    } else {
+      console.log("Ce pokemon n'existe pas");
+    }
+    //test pour voir ce qu'on a recup de l'api
+    this.getPokemons();
+  }
+
+  getPokemons() {
+    this.pokeApiService.getPokemons().subscribe((data) => {
+      data.pokemon_entries.forEach((p) => {
+        console.log(p);
+        this.list.push(p.pokemon_species);
+      });
+    });
+  }
+
+  getPokemonInfo() {
+    this.pokeApiService
+      .getPokemonInfo(54)
+      .subscribe((pokemon: Pokemon) => console.log(pokemon.name));
   }
 }
