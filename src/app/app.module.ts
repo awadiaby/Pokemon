@@ -11,13 +11,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 
 import { HttpClientModule } from '@angular/common/http';
+import { InfoPokemonComponent } from './info-pokemon/info-pokemon.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MyComponentComponent,
-    FilterPokemonPipePipe
+    FilterPokemonPipePipe,
+    InfoPokemonComponent
   ],
   imports: [
     BrowserModule,

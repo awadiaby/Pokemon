@@ -12,13 +12,11 @@ export class MyComponentComponent implements OnInit {
   id: string = '';
   list: Pokemon[] = [];
 
-  selectedPokemon = 'Florizare';
+  selectedPokemon!: Pokemon;
   constructor(private pokeApiService: PokeApiService) {
-    //this.getPokemons();
-    this.getPokemonInfo();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onChange(value: any) {
     console.log(value);
@@ -39,16 +37,21 @@ export class MyComponentComponent implements OnInit {
 
   getPokemons() {
     this.pokeApiService.getPokemons().subscribe((data) => {
+      console.log(data)
       data.pokemon_entries.forEach((p) => {
-        console.log(p);
+        
         this.list.push(p.pokemon_species);
       });
     });
   }
 
-  getPokemonInfo() {
-    this.pokeApiService
-      .getPokemonInfo(54)
-      .subscribe((pokemon: Pokemon) => console.log(pokemon.name));
-  }
+  // getPokemonInfo() {
+  //   this.pokeApiService
+  //     .getPokemonInfo(54)
+  //     .subscribe((pokemon: Pokemon) => {
+  //       this.pokemon = pokemon;
+  //       console.log(pokemon)
+  //     });
+  // }
+
 }

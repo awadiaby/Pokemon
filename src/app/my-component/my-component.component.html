@@ -3,11 +3,12 @@
 <p>Texte saisi : {{ id }}</p>
 <input readonly id="id" value="{{ id }}" /><br /><br />
 <select [ngModel]="selectedPokemon" (ngModelChange)="onChange($event)">
-  <option *ngFor="let pokemon of list | filterPokemonPipe: 'nom':id">
-    {{ pokemon.nom }}
+  <option *ngFor="let pokemon of list | filterPokemonPipe: 'name':id" [ngValue]= "pokemon">
+    {{ pokemon.name }}
   </option>
 </select><br /><br />
 <button (click)="afficherPokemon()">Go !</button>
 
 <!-- pour tester Material ui -->
 <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
+<app-info-pokemon [pokemon]="selectedPokemon"></app-info-pokemon>

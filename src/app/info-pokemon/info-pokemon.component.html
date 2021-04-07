@@ -1,0 +1,8 @@
+<p>
+    id : {{ pokemon?.id}} <br>
+    nom : {{pokemon?.name}} <br>
+    stats :
+    <span *ngFor="let stat of pokemon?.stats">
+        {{ stat.base_stat}},
+    </span>
+</p>
