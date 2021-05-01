@@ -1,6 +1,10 @@
 <p>
     id : {{ pokemon?.id}} <br>
     nom : {{pokemon?.name}} <br>
+
+    <span *ngIf="pokemon">
+    <input type="text" [(ngModel)]="pokemon.name">
+  </span>
     stats :
     <span *ngFor="let stat of pokemon?.stats">
         {{ stat.base_stat}},

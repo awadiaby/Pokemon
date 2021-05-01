@@ -1,4 +1,5 @@
 import { Pokemon } from './pokemon';
+
 export interface Config {
   pokemon_entries: PokemonEntry[];
 }

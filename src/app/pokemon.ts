@@ -14,10 +14,8 @@ export class Pokemon {
     this.name = name;
     this.url = url;
   }
-
-
 }
 
 interface Stat {
-  base_stat : number;
+  base_stat: number;
 }
